@@ -14,6 +14,7 @@ public class ToDoQController : Controller
 
     public IActionResult Index()
     {
+        ViewData["Title"] = "Lista de Tarefas";
         var toDos = _context.ToDos.ToList();
         return View(toDos);
     }
