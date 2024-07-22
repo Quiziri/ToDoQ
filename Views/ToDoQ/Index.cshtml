@@ -1,0 +1,27 @@
+﻿@model List<ToDoQ.Models.ToDo>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Título</th>
+      <th scope="col">Criado em</th>
+      <th scope="col">Data de entrega</th>
+      <th scope="col">Finalizado em</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var toDo in Model)
+    {
+        <tr>
+            <td>@toDo.Id</td>
+            <td>@toDo.Title</td>
+            <td>@toDo.CreateAt</td>
+            <td>@toDo.Deadline</td>
+            <td>@toDo.FinishedAt</td>
+            <td></td>
+        </tr>
+    }
+  </tbody>
+</table>
