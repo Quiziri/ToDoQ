@@ -18,4 +18,24 @@ public class ToDoQController : Controller
         var toDos = _context.ToDos.ToList();
         return View(toDos);
     }
+
+    public IActionResult Create()
+    {
+        ViewData["Title"] = "Nova Tarefa";
+        return View("Form");
+    }
+    [HttpPost]
+    public IActionResult Create(ToDo toDo)
+    {
+        _context.ToDos.Add(toDo);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+
+    public IActionResult Edit(int id)
+    {
+        var toDo = _context.ToDos.Find(id);
+        ViewData["Title"] = "Editar Tarefa";
+        return View("Forma", toDo);
+    }
 }
