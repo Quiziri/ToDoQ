@@ -41,6 +41,10 @@ public class ToDoQController : Controller
     public IActionResult Edit(int id)
     {
         var toDo = _context.ToDos.Find(id);
+        if(toDo is null)
+        {
+            return NotFound();
+        }
         ViewData["Title"] = "Editar Tarefa";
         return View("Form", toDo);
     }
@@ -61,6 +65,10 @@ public class ToDoQController : Controller
     public IActionResult Delete(int id)
     {
         var toDo = _context.ToDos.Find(id);
+        if(toDo is null)
+        {
+            return NotFound();
+        }
         ViewData["Title"] = "Excluir Tarefa";
         return View(toDo);
     }
@@ -69,6 +77,18 @@ public class ToDoQController : Controller
     public IActionResult Delete(ToDo toDo)
     {
         _context.ToDos.Remove(toDo);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
+
+    public IActionResult Finish(int id)
+    {
+        var toDo = _context.ToDos.Find(id);
+        if(toDo is null)
+        {
+            return NotFound();
+        }
+        toDo.FinishedAt = DateOnly.FromDateTime(DateTime.Now);
         _context.SaveChanges();
         return RedirectToAction(nameof(Index));
     }
