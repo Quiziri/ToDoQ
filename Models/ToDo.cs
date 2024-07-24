@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using ToDoQ.Validators;
 
 namespace ToDoQ.Models;
 
@@ -14,6 +15,7 @@ public class ToDo
     
     [Display(Name = "Título")]
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
+    [FutureOrPresent]
     public DateOnly Deadline { get; set; }
     public DateOnly? FinishedAt { get; set; }
 }
