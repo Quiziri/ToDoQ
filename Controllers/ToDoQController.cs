@@ -27,6 +27,7 @@ public class ToDoQController : Controller
     [HttpPost]
     public IActionResult Create(ToDo toDo)
     {
+        toDo.CreateAt = DateTime.Now;
         _context.ToDos.Add(toDo);
         _context.SaveChanges();
         return RedirectToAction(nameof(Index));
@@ -36,6 +37,14 @@ public class ToDoQController : Controller
     {
         var toDo = _context.ToDos.Find(id);
         ViewData["Title"] = "Editar Tarefa";
-        return View("Forma", toDo);
+        return View("Form", toDo);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(ToDo toDo)
+    {
+        _context.ToDos.Update(toDo);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
     }
 }
