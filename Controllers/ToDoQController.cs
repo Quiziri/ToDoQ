@@ -47,4 +47,19 @@ public class ToDoQController : Controller
         _context.SaveChanges();
         return RedirectToAction(nameof(Index));
     }
+
+    public IActionResult Delete(int id)
+    {
+        var toDo = _context.ToDos.Find(id);
+        ViewData["Title"] = "Excluir Tarefa";
+        return View(toDo);
+    }
+
+    [HttpPost]
+    public IActionResult Delete(ToDo toDo)
+    {
+        _context.ToDos.Remove(toDo);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Index));
+    }
 }

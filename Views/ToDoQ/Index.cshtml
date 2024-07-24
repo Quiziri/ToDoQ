@@ -26,8 +26,8 @@
               <td>@(toDo.FinishedAt.HasValue ? toDo.FinishedAt : "-")</td>
               <td>
                 <a class="btn btn-success btn-sn">concluir</a>
-                <a asp-controller="ToDoQ" asp-action="Edit" asp-route-id="@toDo.Id" class="btn btn-warning btn-sn">Editar</a>
-                <a class="btn btn-danger btn-sn">Excluir</a>
+                <a asp-controller="ToDoQ" asp-action="Edit" asp-route-id="@toDo.Id" class="btn btn-warning btn-sm">Editar</a>
+                <a asp-controller="ToDoQ" asp-action="Delete" asp-route-id="@toDo.Id" class="btn btn-danger btn-sm">Excluir</a>
               </td>
           </tr>
       }
