@@ -88,7 +88,7 @@ public class ToDoQController : Controller
         {
             return NotFound();
         }
-        toDo.FinishedAt = DateOnly.FromDateTime(DateTime.Now);
+        toDo.Finish();
         _context.SaveChanges();
         return RedirectToAction(nameof(Index));
     }
